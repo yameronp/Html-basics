@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Profile — Semantic HTML & Accessible Form</title>
+  <meta name="description" content="A semantic, accessible personal profile demo with landmarks, correct headings, and an accessible contact form.">
+  <style>
+    :root { --space: 1rem; --border:#cbd5e1; --muted:#475569; }
+    html { line-height: 1.5; }
+    body { max-width: 80ch; margin: 0 auto; padding: var(--space); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    header, nav, main, footer, article, aside, section { padding-block: .5rem; }
+    nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: .75rem; flex-wrap: wrap; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+    figure { margin: .5rem 0; }
+    figcaption { font-size: .9rem; color: var(--muted); }
+    label { display: block; font-weight: 600; margin-block: .6rem .25rem; }
+    input, select, textarea { width: 100%; padding: .6rem; border: 1px solid #94a3b8; border-radius: .375rem; }
+    fieldset { border: 1px solid var(--border); padding: 1rem; border-radius: .5rem; }
+    small { display:block; color: var(--muted); }
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 768px){ .grid-2 { grid-template-columns: 2fr 1fr; } }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 768px){ .cards { grid-template-columns: repeat(2, 1fr); } }
+    .card { border: 1px solid var(--border); border-radius: .5rem; padding: 1rem; background: white; }
+    pre { background:#0b1020; color:#e5e7eb; padding:.75rem; border-radius:.5rem; overflow:auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus-visible { position: static; display: inline-block; background: #fffae5; padding: .25rem .5rem; border-radius: .25rem; }
+
+    /* Table enhancements */
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid var(--border); padding: .5rem; text-align: left; }
+    td { font-variant-numeric: tabular-nums; }
+    caption { text-align: left; font-weight: 600; margin-bottom: .25rem; }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header>
+    <h1>Personal Profile</h1>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1" class="grid grid-2">
+    <article id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About me</h2>
+      <p>I’m a student developer building a portfolio that demonstrates semantic HTML and accessible UI patterns.</p>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+             width="120" height="120"
+             alt="Stylized HTML5 badge logo in orange and white">
+        <figcaption>HTML5 badge logo</figcaption>
+      </figure>
+
+      <section aria-labelledby="hours-heading">
+        <h3 id="hours-heading">Office hours</h3>
+        <div class="table-wrap" role="region" aria-labelledby="hours-heading">
+          <table>
+            <caption>Weekly opening hours</caption>
+            <colgroup>
+              <col class="col-day"><col class="col-time">
+            </colgroup>
+            <thead>
+              <tr><th scope="col">Day</th><th scope="col">Time</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Mon–Fri</th>
+                <td><time datetime="09:00">09:00</time>–<time datetime="17:00">17:00</time></td>
+              </tr>
+              <tr>
+                <th scope="row">Sat</th>
+                <td><time datetime="10:00">10:00</time>–<time datetime="14:00">14:00</time></td>
+              </tr>
+              <tr>
+                <th scope="row">Sun</th><td>Closed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </article>
+
+    <aside aria-label="Profile details">
+      <h2>Profile details</h2>
+      <ul>
+        <li>Semantic HTML</li>
+        <li>Accessible forms</li>
+        <li>Responsive layout fundamentals</li>
+      </ul>
+      <p><a href="#top">Back to top</a></p>
+    </aside>
+
+    <article id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Card component</h3>
+          <p>Example of a component within an <code>article</code> section.</p>
+        </div>
+        <div class="card">
+          <h3>Another project</h3>
+          <p>Cards are laid out responsively using CSS Grid.</p>
+        </div>
+      </div>
+    </article>
+
+    <article id="articles" aria-labelledby="articles-heading">
+      <h2 id="articles-heading">Articles</h2>
+      <p>Use semantic elements like <code>&lt;article&gt;</code> and <code>&lt;section&gt;</code> to structure content. Avoid using headings out of order.</p>
+      <pre><code>&lt;!-- Correct heading order --&gt;
+&lt;h1&gt;Page title&lt;/h1&gt;
+  &lt;h2&gt;Section&lt;/h2&gt;
+    &lt;h3&gt;Subsection&lt;/h3&gt;</code></pre>
+    </article>
+
+    <article id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p>The form uses labels tied to inputs, helpful input types, required attributes, and an ARIA live region for status updates.</p>
+      <form action="#" method="post" novalidate>
+        <fieldset>
+          <legend>Your details</legend>
+
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" required autocomplete="email" inputmode="email">
+
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\s\-()]{7,}" aria-describedby="phone-help">
+          <small id="phone-help">Accepted: digits, +, -, spaces, parentheses.</small>
+
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic" required>
+            <option value="">Choose one…</option>
+            <option value="general">General question</option>
+            <option value="support">Support</option>
+            <option value="feedback">Feedback</option>
+          </select>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required aria-describedby="message-help"></textarea>
+          <small id="message-help">Do not include passwords or sensitive information.</small>
+
+          <button type="submit">Send message</button>
+        </fieldset>
+        <p id="status" aria-live="polite"></p>
+      </form>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Personal Profile Demo.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.querySelector('form');
+    const status = document.getElementById('status');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = 'Thanks! This is a demo; submission is not sent.';
+    });
+  </script>
+</body>
+</html>
